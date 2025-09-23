@@ -4,10 +4,37 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+html {
+    /* 1rem = 10px */
+    font-size: 62.5%;
+}
+
+/*---------------------------------------
+    CUSTOM PROPERTIES ( VARIABLES )             
+-----------------------------------------*/
+
+:root {
+    --white: #FFFFFF;
+    --black: #000000;
+    --background-things: #E5E5E5;
+
+    --primary-400: #9D4EDD;
+    --primary-500: #7B2CBF;
+    --primary-600: #5A189A;
+    --primary-700: #3C096C;
+
+    --secondary-300: #F1DFFF;
+    --secondary-400: #E6BDFE;
+    --secondary-500: #C77DFF;
+
+    --gradient-primary: linear-gradient(to bottom, #9D4EDD 0%, #7B2CBF 61%, #7B2CBF 100%);
+    --box_shadow_default: -0.3rem 0.4rem 0.4rem rgba(0, 0, 0, 0.3);
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     background: linear-gradient(135deg, #8B5CF6 0%, #A855F7 100%);
     min-height: 100vh;
     display: flex;
@@ -15,6 +42,8 @@ body {
     justify-content: center;
     padding: 20px;
 }
+
+/* Login Styles */
 
 .container {
     background: white;
@@ -118,4 +147,354 @@ body {
 
 .screen.active {
     display: block;
+}
+
+/* Calendar Styles */
+
+.calendar-input-container {
+    position: relative;
+}
+
+.calendar-input {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    background: #F3F4F6;
+    border-radius: 12px;
+    font-size: 16px;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.calendar-input:focus {
+    background: #E5E7EB;
+}
+
+.calendar-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.calendar-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.calendar-container {
+    background: var(--white);
+    border-radius: 1.5rem;
+    padding: 3rem;
+    max-width: 45rem;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+    font-family: "Poppins", sans-serif;
+}
+
+.calendar-modal.active .calendar-container {
+    transform: scale(1);
+}
+
+.calendar-nav-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-arrow {
+    width: 1.1rem;
+    height: 1.1rem;
+    color: var(--primary-600);
+}
+
+#nav-arrow-left {
+    transform: rotate(-90deg);
+}
+
+.nav-arrow:not(#nav-arrow-left) {
+    transform: rotate(90deg);
+}
+
+.month-year {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.month-year h2 {
+    color: var(--primary-600);
+    cursor: pointer;
+    transition: color 0.2s;
+    font-size: 2.3rem;
+    font-weight: bold;
+}
+
+.month-year h2:hover {
+    color: var(--primary-400);
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+}
+
+.day-header {
+    text-align: center;
+    font-family: 'Pontano Sans', sans-serif;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--secondary-500);
+    padding: 1.2rem 0;
+}
+
+.day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1.6rem;
+    transition: all 0.2s ease;
+    position: relative;
+    background: var(--background-things);
+    color: var(--primary-600);
+    margin: 0.2rem;
+}
+
+.day.today,
+.day:hover {
+    background: var(--secondary-400);
+}
+
+.day.selected {
+    background: var(--primary-600) !important;
+    color: var(--white) !important;
+}
+
+.day.selected:hover {
+    background: var(--primary-400) !important;
+}
+
+.day.other-month {
+    opacity: 0.4;
+    color: var(--primary-400);
+    background: rgba(229, 229, 229, 0.5);
+}
+
+.day.other-month:hover {
+    opacity: 0.7;
+    background: rgba(157, 78, 221, 0.3);
+}
+
+.day.other-month.selected {
+    background: var(--primary-600) !important;
+    color: var(--white) !important;
+    opacity: 0.9;
+}
+
+.day.other-month.selected:hover {
+    background: var(--primary-400) !important;
+    opacity: 1;
+}
+
+.calendar-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.calendar-btn {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.4rem;
+    transition: all 0.2s ease;
+}
+
+.calendar-btn.cancel {
+    background: var(--background-things);
+    color: var(--black);
+}
+
+.calendar-btn.cancel:hover {
+    background: var(--secondary-400);
+}
+
+.calendar-btn.confirm {
+    background: var(--primary-600);
+    color: var(--white);
+}
+
+.calendar-btn.confirm:hover {
+    background: var(--primary-400);
+}
+
+.calendar-btn:disabled {
+    background: var(--background-things);
+    color: #999;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Year Selection Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.year-modal {
+    background: var(--white);
+    border-radius: 1.5rem;
+    padding: 3rem;
+    max-width: 40rem;
+    width: 90%;
+    overflow-y: auto;
+    box-shadow: var(--box_shadow_default);
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .year-modal {
+    transform: scale(1);
+}
+
+.modal-header {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.modal-title {
+    color: var(--primary-600);
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.year-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.8rem;
+    margin-bottom: 1.8rem;
+    max-height: 40rem;
+    overflow-y: auto;
+    padding: 1rem;
+    border-radius: 1.2rem;
+}
+
+.year-grid::-webkit-scrollbar {
+    width: 0.6rem;
+}
+
+.year-grid::-webkit-scrollbar-track {
+    background: var(--secondary-300);
+    border-radius: 0.3rem;
+}
+
+.year-grid::-webkit-scrollbar-thumb {
+    background: var(--secondary-400);
+    border-radius: 0.3rem;
+}
+
+.year-grid::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-500);
+}
+
+.year-item {
+    padding: 1.2rem 0.8rem;
+    text-align: center;
+    border-radius: 0.8rem;
+    background: var(--background-things);
+    color: var(--black);
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1.4rem;
+    transition: all 0.2s ease;
+}
+
+.year-item:hover {
+    background: var(--secondary-400);
+}
+
+.year-item.current {
+    background: var(--secondary-400);
+}
+
+.year-item.selected {
+    background: var(--primary-600);
+    color: var(--white);
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: flex-end;
+}
+
+.modal-btn {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.modal-btn.cancel {
+    background: var(--background-things);
+    color: var(--black);
+}
+
+.modal-btn.cancel:hover {
+    background: var(--secondary-400);
+}
+
+.modal-btn.confirm {
+    background: var(--primary-600);
+    color: var(--white);
+}
+
+.modal-btn.confirm:hover {
+    background: var(--primary-400);
 }
