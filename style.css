@@ -45,10 +45,18 @@ body {
 
 /* Login Styles */
 
+.screen {
+    display: none;
+}
+
+.screen.active {
+    display: block;
+}
+
 .container {
     background: white;
-    border-radius: 24px;
-    padding: 40px 30px;
+    border-radius: 36px;
+    padding: 28px 30px;
     width: 100%;
     max-width: 380px;
     position: relative;
@@ -56,97 +64,107 @@ body {
 }
 
 .logo {
+    width: 67px;
     position: absolute;
-    top: -25px;
+    top: -29px;
     left: 50%;
     transform: translateX(-50%);
     background: white;
-    border-radius: 12px;
-    padding: 15px;
-    box-shadow: 0 10px 25px rgba(139, 92, 246, 0.2);
-}
-
-.logo svg {
-    width: 24px;
-    height: 24px;
-    color: #8B5CF6;
+    border-radius: 10px;
+    padding: 11px;
+    box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.37);
 }
 
 .title {
     text-align: center;
-    font-size: 32px;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 60px;
-    margin-top: -80px;
+    font-size: 3.2rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 50px;
+}
+
+.first-form {
+    margin-top: 22px;
 }
 
 .form-group {
-    margin-bottom: 24px;
+    margin-bottom: 10px;
 }
 
 .form-label {
     display: block;
-    font-size: 16px;
-    font-weight: 500;
-    color: #374151;
-    margin-bottom: 8px;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--black);
+    margin-bottom: 7px;
 }
 
 .form-input {
     width: 100%;
+    height: 5rem;
     padding: 16px;
     border: none;
-    background: #F3F4F6;
-    border-radius: 12px;
-    font-size: 16px;
+    background: var(--background-things);
+    border-radius: 10px;
+    font-size: 1.6rem;
     outline: none;
     transition: background-color 0.2s;
 }
 
 .form-input:focus {
-    background: #E5E7EB;
+    background: var(--secondary-300);
 }
 
-.confirm-btn {
-    width: 100%;
-    background: #8B5CF6;
-    color: white;
-    border: none;
-    border-radius: 12px;
-    padding: 16px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    margin-top: 32px;
-}
-
-.confirm-btn:hover {
-    background: #7C3AED;
-}
-
-.forgot-password {
+.link-redirect {
     text-align: center;
-    margin: 16px 0;
+    margin-top: 13px;
 }
 
-.forgot-password a {
-    color: #8B5CF6;
+.link-redirect a {
+    color: var(--primary-600);
     text-decoration: none;
-    font-size: 14px;
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: normal;
 }
 
-.forgot-password a:hover {
+.link-redirect a:hover {
     text-decoration: underline;
 }
 
-.screen {
-    display: none;
+.container-btn-form {
+    display: flex;
+    justify-content: center;
 }
 
-.screen.active {
-    display: block;
+.confirm-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--primary-500);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 16px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 13px;
+    transition: .2s;
+}
+
+.confirm-btn:hover {
+    background: var(--primary-600);
+}
+
+#btn-login {
+    width: 86px;
+    height: 38px;
+}
+
+.btn-registration {
+    width: 118px;
+    height: 38px;
 }
 
 /* Calendar Styles */
@@ -161,7 +179,7 @@ body {
     border: none;
     background: #F3F4F6;
     border-radius: 12px;
-    font-size: 16px;
+    font-size: 1.6rem;
     outline: none;
     cursor: pointer;
     transition: background-color 0.2s;
@@ -214,15 +232,14 @@ body {
     border: none;
     cursor: pointer;
     user-select: none;
-    padding: 0.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .nav-arrow {
-    width: 1.1rem;
-    height: 1.1rem;
+    width: 3rem;
+    height: 3rem;
     color: var(--primary-600);
 }
 

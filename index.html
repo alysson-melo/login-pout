@@ -18,9 +18,9 @@
     <div class="screen active" id="loginScreen">
         <h1 class="title">Login</h1>
         <form class="container" id="loginForm">
-            <div class="logo">...</div>
+            <img src="icons/Planningout_logo.svg" class="logo" alt="logo of planning out">
 
-            <div class="form-group">
+            <div class="form-group first-form">
                 <label class="form-label">E-mail</label>
                 <input type="email" class="form-input" id="loginEmail" required>
             </div>
@@ -30,11 +30,13 @@
                 <input type="password" class="form-input" id="loginPassword" required>
             </div>
 
-            <div class="forgot-password">
-                <a href="#" id="registrationPage">Não possui cadastro? Clique aqui!</a>
+            <div class="link-redirect">
+                <a href="#" id="link-redirect">Não possui cadastro? Clique aqui!</a>
             </div>
 
-            <button type="submit" class="confirm-btn">Entrar</button>
+            <div class="container-btn-form">
+                <button type="submit" id="btn-login" class="confirm-btn">Entrar</button>
+            </div>
         </form>
     </div>
 
@@ -42,7 +44,8 @@
     <div class="screen" id="registrationScreen1">
         <h1 class="title">Cadastro</h1>
         <form class="container" id="formStep1">
-            <div class="form-group">
+            <img src="icons/Planningout_logo.svg" class="logo" alt="logo of planning out">
+            <div class="form-group first-form">
                 <label class="form-label">Nome completo</label>
                 <input type="text" class="form-input" id="fullName" required>
             </div>
@@ -50,11 +53,17 @@
             <div class="form-group">
                 <label class="form-label">Data de nascimento</label>
                 <div class="calendar-input-container">
-                    <input type="text" class="calendar-input" id="bday" required>
+                    <input type="text" class="form-input" id="bday" readonly>
                 </div>
             </div>
 
-            <button type="submit" class="confirm-btn">Confirmar</button>
+            <div class="link-redirect">
+                <a href="#" id="link-redirect">Já possiu cadastro? Clique aqui!</a>
+            </div>
+
+            <div class="container-btn-form">
+                <button type="submit" class="confirm-btn btn-registration">Confirmar</button>
+            </div>
         </form>
     </div>
 
@@ -62,7 +71,8 @@
     <div class="screen" id="registrationScreen2">
         <h1 class="title">Cadastro</h1>
         <form class="container" id="formStep2">
-            <div class="form-group">
+            <img src="icons/Planningout_logo.svg" class="logo" alt="logo of planning out">
+            <div class="form-group first-form">
                 <label class="form-label">E-mail</label>
                 <input type="email" class="form-input" id="registrationEmail" required>
             </div>
@@ -77,7 +87,13 @@
                 <input type="password" class="form-input" id="confirmPassword" required>
             </div>
 
-            <button type="submit" class="confirm-btn">Confirmar</button>
+            <div class="link-redirect">
+                <a href="#" id="link-redirect">Já possiu cadastro? Clique aqui!</a>
+            </div>
+
+            <div class="container-btn-form">
+                <button type="submit" class="confirm-btn btn-registration">Confirmar</button>
+            </div>
         </form>
     </div>
 
@@ -85,7 +101,8 @@
     <div class="screen" id="registrationScreen3">
         <h1 class="title">Cadastro</h1>
         <form class="container" id="formStep3">
-            <div class="form-group">
+            <img src="icons/Planningout_logo.svg" class="logo" alt="logo of planning out">
+            <div class="form-group first-form">
                 <label class="form-label">Nome de usuário</label>
                 <input type="text" class="form-input" id="userName" required>
             </div>
@@ -95,8 +112,13 @@
                 <label><input type="radio" name="gender" value="Masculino"> Masculino</label>
                 <label><input type="radio" name="gender" value="Feminino"> Feminino</label>
             </div>
+            <div class="link-redirect">
+                <a href="#" id="link-redirect">Já possiu cadastro? Clique aqui!</a>
+            </div>
 
-            <button type="submit" class="confirm-btn">Cadastrar</button>
+            <div class="container-btn-form">
+                <button type="submit" class="confirm-btn btn-registration">Cadastrar</button>
+            </div>
         </form>
     </div>
 
