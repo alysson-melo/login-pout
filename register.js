@@ -1,44 +1,8 @@
-// Login/Registration
+// Register
 function showScreen(screenId) {
     document.querySelectorAll('.screen').forEach(screen => screen.classList.remove('active'))
     document.querySelector(screenId).classList.add('active')
 }
-
-const loginForm = document.querySelector('#loginForm')
-loginForm.addEventListener('submit', async (e) => {
-    e.preventDefault()
-    const email = document.querySelector('#loginEmail').value.trim()
-    const password = document.querySelector('#loginPassword').value.trim()
-
-    const user = {
-        email: email,
-        senha: password
-    }
-
-    try {
-        const response = await fetch("http://localhost:3000/users/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(user)
-        })
-
-        if (!response.ok) {
-            const errorData = await response.json()
-            alert(errorData.error)
-            return
-        }
-
-        alert("~Você fez login")
-    }
-    catch (error) {
-        alert("Não foi possível conectar ao servidor")
-        console.error(error)
-    }
-})
-
-document.querySelector('#registrationPage').addEventListener('click', () => {
-    showScreen('#registrationScreen1')
-})
 
 const formStep1 = document.querySelector('#formStep1')
 formStep1.addEventListener('submit', (e) => {
@@ -212,10 +176,8 @@ function generateCalendar(year, month) {
             dayElement.style.opacity = '0.3'
             dayElement.style.cursor = 'not-allowed'
         }
-
         calendar.appendChild(dayElement)
     }
-
     updateAllDayClasses()
 }
 
