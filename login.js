@@ -25,7 +25,7 @@ loginForm.addEventListener('submit', async (e) => {
         alert("Você fez login")
     }
     catch (error) {
-        alert("Não foi possível conectar ao servidor")
+        alert("Não foi possível conectar ao servidor, tente novamente mais tarde")
         console.error(error)
     }
 })

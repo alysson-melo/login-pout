@@ -1,7 +1,18 @@
 // Register
 function showScreen(screenId) {
-    document.querySelectorAll('.screen').forEach(screen => screen.classList.remove('active'))
-    document.querySelector(screenId).classList.add('active')
+    const current = document.querySelector('.screen.active')
+    const next = document.querySelector(screenId)
+
+    if (current) {
+        current.classList.remove('active')
+        current.classList.add('exit-left')
+
+        // remove a classe exit-left depois da animação
+        setTimeout(() => current.classList.remove('exit-left'), 500)
+    }
+
+    // anima entrada da próxima
+    next.classList.add('active')
 }
 
 const formStep1 = document.querySelector('#formStep1')
@@ -65,7 +76,8 @@ formStep3.addEventListener('submit', async (e) => {
         showScreen('#loginScreen')
     }
     catch (error) {
-        alert(error)
+        alert("Não foi possível conectar ao servidor, tente novamente mais tarde")
+        console.error(error)
     }
 })
 
