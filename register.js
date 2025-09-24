@@ -73,7 +73,7 @@ formStep3.addEventListener('submit', async (e) => {
         }
 
         alert("Usuário cadastrado com sucesso!")
-        showScreen('#loginScreen')
+        window.location.href = "index.html";
     }
     catch (error) {
         alert("Não foi possível conectar ao servidor, tente novamente mais tarde")
