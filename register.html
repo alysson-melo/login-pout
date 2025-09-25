@@ -22,13 +22,15 @@
             <img src="icons/Planningout_logo.svg" class="logo" alt="logo of planning out">
             <div class="form-group first-form">
                 <label class="form-label">Nome completo</label>
-                <input type="text" class="form-input" id="fullName" required>
+                <input type="text" class="form-input" id="fullName">
+                <span class="error-message" id="errorFullName"></span>
             </div>
 
             <div class="form-group">
                 <label class="form-label">Data de nascimento</label>
                 <div class="calendar-input-container">
                     <input type="text" class="form-input" id="bday" readonly>
+                    <span class="error-message" id="errorBday"></span>
                 </div>
             </div>
 
@@ -49,17 +51,20 @@
             <img src="icons/Planningout_logo.svg" class="logo" alt="logo of planning out">
             <div class="form-group first-form">
                 <label class="form-label">E-mail</label>
-                <input type="email" class="form-input" id="registrationEmail" required>
+                <input type="text" inputmode="email" class="form-input" id="registrationEmail">
+                <span class="error-message" id="errorEmail"></span>
             </div>
 
             <div class="form-group">
                 <label class="form-label">Senha</label>
-                <input type="password" class="form-input" id="registrationPassword" required>
+                <input type="password" class="form-input" id="registrationPassword">
+                <span class="error-message" id="errorPassword"></span>
             </div>
 
             <div class="form-group">
                 <label class="form-label">Confirmar senha</label>
-                <input type="password" class="form-input" id="confirmPassword" required>
+                <input type="password" class="form-input" id="confirmPassword">
+                <span class="error-message" id="errorConfirmPassword"></span>
             </div>
 
             <div class="link-redirect">
@@ -79,7 +84,8 @@
             <img src="icons/Planningout_logo.svg" class="logo" alt="logo of planning out">
             <div class="form-group first-form">
                 <label class="form-label">Nome de usuário</label>
-                <input type="text" class="form-input" id="userName" required>
+                <input type="text" class="form-input" id="userName">
+                <span class="error-message" id="errorUserName"></span>
             </div>
 
             <div class="form-group">

@@ -1,47 +1,92 @@
 // Register
+
 function showScreen(screenId) {
     const current = document.querySelector('.screen.active')
     const next = document.querySelector(screenId)
 
-    if (current) {
-        current.classList.add('exit-left')
+    if (current === next) return
 
-        current.addEventListener('transitionend', () => {
-            current.classList.remove('active', 'exit-left')
-            current.style.visibility = 'hidden' 
-        }, { once: true })
-    }
+    current.classList.add('exit-left')
+    current.addEventListener('transitionend', () => {
+        current.classList.remove('active', 'exit-left')
+        current.style.visibility = 'hidden'
+    }, { once: true })
+
+    // Mostra a próxima tela com animação
     next.style.visibility = 'visible'
     next.classList.add('active')
+}
+
+function clearErrors() {
+    document.querySelectorAll('.error-message').forEach(span => {
+        span.textContent = ''
+    })
+}
+
+function isStrongPassword(password) {
+    // mínimo 8 caracteres, 1 letra maiúscula, 1 número
+    const regex = /^(?=.*[A-Z])(?=.*\d).{8,}$/
+    return regex.test(password)
 }
 
 const formStep1 = document.querySelector('#formStep1')
 formStep1.addEventListener('submit', (e) => {
     e.preventDefault()
+    clearErrors()
+
     const fullName = document.querySelector('#fullName').value.trim()
-    const bday = document.querySelector('#bday').value
-    if (fullName && bday) showScreen('#registrationScreen2')
+    let isValid = true
+    const fullNameRegex = /^[A-Za-zÀ-ÿ\s]+$/
+
+    if (!fullNameRegex.test(fullName)) {
+        document.getElementById('errorFullName').textContent = 'Digite um nome válido'
+        isValid = false
+    }
+
+    if (!bdayISO) {
+        document.getElementById('errorBday').textContent = 'Selecione sua data de nascimento'
+        isValid = false
+    }
+
+    if (isValid) showScreen('#registrationScreen2')
 })
 
 const formStep2 = document.querySelector('#formStep2')
 formStep2.addEventListener('submit', (e) => {
     e.preventDefault()
+    clearErrors()
+
     const email = document.querySelector('#registrationEmail').value.trim()
     const password = document.querySelector('#registrationPassword').value
     const confirmPassword = document.querySelector('#confirmPassword').value
 
-    if (email && password && confirmPassword) {
-        if (password !== confirmPassword) {
-            alert("As senhas não coincidem!")
-            return
-        }
-        showScreen('#registrationScreen3')
+    let isValid = true
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+    if (!emailRegex.test(email)) {
+        document.getElementById('errorEmail').textContent = 'Digite um email válido'
+        isValid = false
     }
+
+    if (!isStrongPassword(password)) {
+        document.getElementById('errorPassword').textContent =
+            'A senha deve ter no mínimo 8 caracteres, 1 número e 1 letra maiúscula'
+        isValid = false
+    }
+
+    if (password !== confirmPassword) {
+        document.getElementById('errorConfirmPassword').textContent = 'As senhas não coincidem'
+        isValid = false
+    }
+
+    if (isValid) showScreen('#registrationScreen3')
 })
 
 const formStep3 = document.querySelector('#formStep3')
 formStep3.addEventListener('submit', async (e) => {
     e.preventDefault()
+    clearErrors()
+
     const fullName = document.querySelector('#fullName').value.trim()
     const bday = bdayISO
     const email = document.querySelector('#registrationEmail').value.trim()
@@ -49,6 +94,17 @@ formStep3.addEventListener('submit', async (e) => {
     const userName = document.querySelector('#userName').value.trim()
     const radioBtnGender = document.querySelector('input[name="gender"]:checked')
     const gender = radioBtnGender ? radioBtnGender.value : null
+
+    let isValid = true
+    const userNameRegex = /^(?=.*[A-Za-zÀ-ÿ])[A-Za-zÀ-ÿ0-9\s]+$/
+
+    if (!userNameRegex.test(userName)) {
+        document.getElementById('errorUserName').textContent =
+            'O nome de usuário deve conter apenas letras e números'
+        isValid = false
+    }
+
+    if (!isValid) return
 
     const newUser = {
         Nome: fullName,
@@ -73,7 +129,7 @@ formStep3.addEventListener('submit', async (e) => {
         }
 
         alert("Usuário cadastrado com sucesso!")
-        window.location.href = "index.html";
+        window.location.href = "index.html"
     }
     catch (error) {
         alert("Não foi possível conectar ao servidor, tente novamente mais tarde")

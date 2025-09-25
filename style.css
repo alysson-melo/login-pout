@@ -137,6 +137,13 @@ body {
     background: var(--secondary-300);
 }
 
+.error-message {
+    color: red;
+    font-size: 1.2rem;
+    margin-top: 5px;
+    display: block;
+}
+
 .link-redirect {
     text-align: center;
     margin-top: 13px;
@@ -181,14 +188,11 @@ body {
     background: var(--primary-600);
 }
 
-/* Substitua a seção de gênero no seu style.css com este código */
-
 .form-gender {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: clamp(15px, 8%, 35px);
-    /* Percentual do container pai */
     margin-top: 10px;
 }
 
@@ -234,9 +238,9 @@ body {
 
 .form-label-gender:has(input[type="radio"]:checked) {
     background-color: var(--secondary-400);
+    transform: translateY(-2px);
 }
 
-/* Container para o ícone */
 .gender-icon-container {
     display: flex;
     align-items: center;
