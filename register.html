@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login e Cadastro</title>
+    <title>Planning Out - Cadastro</title>
+    <link rel="icon" type="image/png" href="icons/Planning-out-logo-page.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -83,9 +84,28 @@
 
             <div class="form-group">
                 <label class="form-label">Sexo</label>
-                <label><input type="radio" name="gender" value="Masculino"> Masculino</label>
-                <label><input type="radio" name="gender" value="Feminino"> Feminino</label>
+                <div class="form-gender">
+                    <div class="gender">
+                        <label class="form-label-gender">
+                            <input type="radio" name="gender" value="Masculino">
+                            <div class="gender-icon-container">
+                                <img src="icons/Male.svg" class="gender-icon" alt="Símbolo gênero masculino">
+                            </div>
+                        </label>
+                        <p>Masculino</p>
+                    </div>
+                    <div class="gender">
+                        <label class="form-label-gender">
+                            <input type="radio" name="gender" value="Feminino">
+                            <div class="gender-icon-container">
+                                <img src="icons/female.svg" class="gender-icon" alt="Símbolo gênero feminino">
+                            </div>
+                        </label>
+                        <p>Feminino</p>
+                    </div>
+                </div>
             </div>
+
             <div class="link-redirect">
                 <a href="index.html">Já possiu cadastro? Clique aqui!</a>
             </div>

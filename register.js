@@ -4,14 +4,14 @@ function showScreen(screenId) {
     const next = document.querySelector(screenId)
 
     if (current) {
-        current.classList.remove('active')
         current.classList.add('exit-left')
 
-        // remove a classe exit-left depois da animação
-        setTimeout(() => current.classList.remove('exit-left'), 500)
+        current.addEventListener('transitionend', () => {
+            current.classList.remove('active', 'exit-left')
+            current.style.visibility = 'hidden' 
+        }, { once: true })
     }
-
-    // anima entrada da próxima
+    next.style.visibility = 'visible'
     next.classList.add('active')
 }
 
