@@ -36,10 +36,10 @@ formStep1.addEventListener('submit', (e) => {
 
     const fullName = document.querySelector('#fullName').value.trim()
     let isValid = true
-    const fullNameRegex = /^[A-Za-zÀ-ÿ\s]+$/
+    const fullNameRegex = /^[A-Za-zÀ-ÿ]+\s+[A-Za-zÀ-ÿ]+(?:\s+[A-Za-zÀ-ÿ]+)*$/
 
     if (!fullNameRegex.test(fullName)) {
-        document.getElementById('errorFullName').textContent = 'Digite um nome válido'
+        document.getElementById('errorFullName').textContent = 'Nome completo deve conter ao menos duas palavras com apenas letras e espaços'
         isValid = false
     }
 
@@ -107,12 +107,12 @@ formStep3.addEventListener('submit', async (e) => {
     if (!isValid) return
 
     const newUser = {
-        Nome: fullName,
-        NomeDeUsuario: userName,
-        DataDeNascimento: bday,
-        Email: email,
-        Senha: password,
-        Sexo: gender
+        nomeCompleto: fullName,
+        nomeDeUsuario: userName,
+        dataDeNascimento: bday,
+        email: email,
+        senha: password,
+        sexo: gender
     }
 
     try {
@@ -307,7 +307,8 @@ function confirmDate() {
     if (selectedDate) {
         const [year, month, day] = selectedDate.split('-')
         const date = new Date(year, month - 1, day)
-        bdayISO = date.toISOString()
+        bdayISO = date.toISOString().split('T')[0]
+        console.log(bdayISO)
         const formattedDate = date.toLocaleDateString('pt-BR')
         document.getElementById('bday').value = formattedDate
         closeCalendar()

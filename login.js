@@ -30,7 +30,7 @@ loginForm.addEventListener('submit', async (e) => {
     const user = { email: email, senha: password }
 
     try {
-        const response = await fetch("http://localhost:3000/users/login", {
+        const response = await fetch("http://localhost:3000/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(user)
@@ -38,11 +38,17 @@ loginForm.addEventListener('submit', async (e) => {
 
         if (!response.ok) {
             const errorData = await response.json()
-            console.log(errorData.error)
+            console.error(errorData.error)
             alert(errorData.error)
             return
         }
-        alert("Você fez login")
+
+        const data = await response.json()
+
+        localStorage.setItem("accessToken", data.accessToken)
+
+        console.log("Login realizado com sucesso!", data.userWithoutPassword)
+        alert("Login realizado com sucesso!")
     }
     catch (error) {
         alert("Não foi possível conectar ao servidor, tente novamente mais tarde")
